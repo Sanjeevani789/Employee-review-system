@@ -1,0 +1,68 @@
+<!-- Main container for the pending and received reviews -->
+<div id="main-container" style="
+    display: flex;
+    justify-content: space-around;
+    margin-top: 50px;
+">
+
+    <!-- Container for pending reviews -->
+    <div class="border border-dark" style="width: 45%">
+        <!-- Header for pending reviews section -->
+        <div class="bg-primary text-white border-dark" style="padding: 5px">
+            <div class="mx-auto" style="width: 200px">
+                <h4>Pending Reviews</h4>
+            </div>
+        </div>
+
+        <!-- Loop through each employee with pending reviews -->
+        <div>
+            <% for(let emp of toReview){%>
+                <!-- Card for writing a review -->
+                <div class="card" style="border: 0;">
+                    <div class="card-body">
+                        <!-- Employee name for whom the review is to be written -->
+                        <h5 class="card-title">Write a review for: <%=emp.name%></h5>
+                        
+                        <!-- Form for submitting a review -->
+                        <form action="/review/create-review/<%=emp._id %>" method="post">
+                            <div class="form-group">
+                                <!-- Text area for entering the review content -->
+                                <textarea class="form-control" rows="3" name="review"
+                                    placeholder="Give your review"></textarea>
+                            </div>
+                            <!-- Button for submitting the review -->
+                            <div style="display: flex; justify-content: flex-end;margin-top: 7px;">
+                                <button type="submit" class="btn btn-primary">Submit Feedback</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            <%}%>
+        </div>
+    </div>
+
+    <!-- Container for received reviews -->
+    <div class="border border-dark" style="width: 45%">
+        <!-- Header for received reviews section -->
+        <div class="bg-primary text-white border-dark" style="padding: 5px">
+            <div class="mx-auto" style="width: 200px">
+                <h4>My Reviews</h4>
+            </div>
+        </div>
+
+        <!-- Loop through each received review -->
+        <div>
+            <% for(let i=0;i< myReviews.length;i++){%>
+                <!-- Card for displaying a received review -->
+                <div class="card">
+                    <div class="card-body">
+                        <!-- Reviewer's name -->
+                        <h5 class="card-title">From : <%=myReviews[i].name%></h5>
+                        <!-- Review content -->
+                        <p class="card-text">Review: <%=myReviews[i].review%></p>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</div>

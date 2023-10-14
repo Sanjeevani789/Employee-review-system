@@ -1,0 +1,31 @@
+<div class="w-50 mx-auto mt-5">
+    <!-- Sign In heading -->
+    <div class="mx-auto mt-3 mb-3" style="width: 200px">
+        <h4>Sign In</h4>
+    </div>
+
+    <!-- Sign In form -->
+    <form class="w-50 mx-auto" action="/employee/create-session" method="POST">
+        <!-- Email input -->
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" placeholder="Email" name="email" required />
+        </div>
+
+        <!-- Password input -->
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="password" name="password" required />
+        </div>
+
+        <!-- Log In button -->
+        <div style="display: flex; justify-content: center">
+            <button type="submit" class="btn btn-primary">Log In</button>
+        </div>
+    </form>
+
+    <!-- Sign Up link -->
+    <div class="mx-auto mb-3 mt-4" style="width: 300px">
+        <a href="/employee/signup" style="margin-left: 40%">Sign Up</a>
+    </div>
+</div>

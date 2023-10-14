@@ -1,0 +1,72 @@
+<!-- Container for the employees list -->
+<div class="w-75 mx-auto mt-5">
+    <!-- Row for the header and "Add a new Employee" button -->
+    <div class="row">
+        <!-- Column for the title "Employees List" -->
+        <div class="col-6">
+            <h1>Employees List</h1>
+        </div>
+        <!-- Column for the "Add a new Employee" button with right alignment -->
+        <div class="col-6 d-flex justify-content-end">
+            <a href="/admin/add-employee" type="button" class="align-self-center">Add a new Employee</a>
+        </div>
+    </div>
+
+    <!-- Check if there are users to display -->
+    <%if(users.length> 0){%>
+        <!-- Display a table if there are users -->
+        <div class="mt-3 mb-3">
+            <!-- Table for displaying user information -->
+            <table class="table">
+                <!-- Table header with column names -->
+                <thead class="bg-primary text-light">
+                    <tr>
+                        <th scope="col">Index</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Admin</th>
+                        <th scope="col">Make Changes</th>
+                    </tr>
+                </thead>
+                <!-- Initialize index variable -->
+                <%i=1%>
+                <!-- Loop through each user to populate the table rows -->
+                <% for(let user of users){%>
+                    <!-- Table body with user information -->
+                    <tbody>
+                        <tr>
+                            <!-- Index column -->
+                            <th scope="row">
+                                <%=i++%>
+                            </th>
+                            <!-- Name column -->
+                            <td>
+                                <%=user.name%>
+                            </td>
+                            <!-- Email column -->
+                            <td>
+                                <%=user.email%>
+                            </td>
+                            <!-- Admin column, displaying "Yes" or "No" based on user role -->
+                            <%if (user.isAdmin){%>
+                                <td>Yes</td>
+                            <%} else {%>
+                                <td>No</td>
+                            <%}%>
+                            <!-- Column with buttons for editing and deleting user -->
+                            <td>
+                                <a href="/admin/update/<%=user.id%>" type="button" class="btn btn-primary">Edit</a>
+                                <a href="/admin/delete/<%=user.id%>" type="button" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                <%}%>
+            </table>
+        </div>
+    <%}else{%>
+        <!-- Display a message if there are no users to show -->
+        <div class="w-75 mx-auto mt-5">
+            <h2>Nothin to show</h2>
+        </div>
+    <%}%>
+</div>

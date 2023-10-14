@@ -1,0 +1,29 @@
+<!-- Header section with navigation bar -->
+<header class="navbar navbar-light">
+    <!-- Container for the navigation bar -->
+    <nav class="container-fluid">
+        <!-- Brand/logo linking to the home page -->
+        <a href="/" class="navbar-brand" style="color: rgb(253, 46, 4); font-weight: 500;">ERS | CodingNinja</a>
+        
+        <!-- Check if a user is logged in -->
+        <% if (locals.user) { %>
+            <!-- Display a welcome message with the user's name -->
+            <a href="/" class="navbar-brand" style="color: rgb(0, 0, 0);">Hi <%= locals.user.name %></a>
+        <% } %>
+
+        <!-- Container for navigation links -->
+        <div class="d-flex">
+            <!-- Check if a user is logged in and is an admin -->
+            <% if (locals.user && locals.user.isAdmin) { %>
+                <!-- Admin navigation links -->
+                <a class="navbar-brand" href="/admin/view-review">View Reviews</a>
+                <a class="navbar-brand" href="/admin/assign-review">Assign Reviews</a>
+                <a class="navbar-brand" href="/admin/admin-view">View Employees</a>
+                <a class="navbar-brand" href="/admin/signout">Sign out</a>
+            <% } else if (locals.user) { %>
+                <!-- Regular user navigation links -->
+                <a class="navbar-brand" href="/employee/signout">Sign out</a>
+            <% } %>
+        </div>
+    </nav>
+</header>

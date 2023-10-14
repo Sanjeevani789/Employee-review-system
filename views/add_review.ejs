@@ -1,0 +1,30 @@
+<!-- Form for adding a review for an employee -->
+<form class="w-50 mx-auto mt-4 p-5" action="/admin/add-review" method="post">
+    <!-- Section for adding a review -->
+    <h4>Add Review for Employee</h4>
+
+    <!-- Dropdown to select the employee to review -->
+    <select class="form-select" name="employee" required>
+        <!-- Default option prompting user to select an employee -->
+        <option value="" disabled selected>Select Employee to Review</option>
+
+        <!-- Loop through each user from the users array -->
+        <% for(user of users){ %>
+            <!-- Option for each user with user id as value and user name as display -->
+            <option value="<%= user.id %>">
+                <%= user.name %>
+            </option>
+        <% } %>
+    </select>
+
+    <!-- Textarea for entering the review -->
+    <div class="form-group mt-3">
+        <textarea class="form-control" required rows="3" name="review" placeholder="Give your review"></textarea>
+    </div>
+
+    <!-- Buttons for resetting the form and submitting the feedback -->
+    <div class="form-group mt-3 text-center">
+        <button type="reset" class="btn btn-danger">Reset</button>
+        <button type="submit" class="btn btn-success">Submit Feedback</button>
+    </div>
+</form>
